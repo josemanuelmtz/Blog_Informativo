@@ -1,5 +1,4 @@
 # Blog_Informativo
 Integrantes: 
-- Omar Ricardo Garay García
-- Miguel Ángel Hernández Solís
+- Juan de Dios Ramírez Campos
 - José Manuel Martínez García
