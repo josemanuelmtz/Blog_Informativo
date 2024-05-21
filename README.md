@@ -13,7 +13,7 @@ Integrantes:
 
 - SSH
 - Seguridad:
-   https
+- https
 - Certificado para https
 - Puertos abiertos:
 - 80 (Nginx)
@@ -27,4 +27,6 @@ Integrantes:
 - Tamaño de memoria: 50G 
 - Zoma horaria America/Mexico_City 
 - Respaldar cada 3 días
+
+ https://chat.whatsapp.com/LjzfcvzXQuS3b97EykVdEV
 
