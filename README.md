@@ -4,8 +4,27 @@ Integrantes:
 - José Manuel Martínez García
 
 # Descripción
-Este es un blog diseñado para educar y entretener a sus lectores mediante contenido relevante sobre el tema de tecnologías emergentes. Nuestro objetivo es ser una fuente confiable de información que mantenga a nuestros lectores actualizados y comprometidos con las últimas tendencias en tecnologías.
 
 # Tiempo
 
 # Requerimientos
+
+# Requerimientos
+
+- SSH
+- Seguridad:
+   https
+- Certificado para https
+- Puertos abiertos:
+- 80 (Nginx)
+- 443 (Nginx)
+- 8080 (local)
+- 3306 (MySQL)
+- Nginx
+- Node JS -> v20.13.1
+- Angular -> v17.1.0
+- MySQL Community -> v8.4.0
+- Tamaño de memoria: 50G 
+- Zoma horaria America/Mexico_City 
+- Respaldar cada 3 días
+
