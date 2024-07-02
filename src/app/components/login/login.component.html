@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="login.component.css">
+</head>
+<body>
+  <div class="ring">
+    <i style="--clr:#00ff0a;"></i>
+    <i style="--clr:#ff0057;"></i>
+    <i style="--clr:#fffd44;"></i>
+    <div class="login">
+      <h2>Inicia Sesion</h2>
+      <div class="inputBx">
+        <input type="text" placeholder="Nombre de Usuario" (input)="onInputUsuario($event)">
+      </div>
+      <div class="inputBx">
+        <input type="password" placeholder="Contraseña" (input)="onInputContrasena($event)">
+      </div>
+      <div class="inputBx">
+        <input type="submit" value="Inicia Sesion" (click)="login()">
+      </div>      
+      <div class="links">
+        <a href="register">Registrate</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

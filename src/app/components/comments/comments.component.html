@@ -1,0 +1,8 @@
+<div class="comment-section">
+    <h3>Comentarios</h3>
+    <div *ngFor="let comment of comments">
+      <p>{{ comment.content }}</p>
+    </div>
+    <textarea [(ngModel)]="newComment" placeholder="Escribe un comentario..."></textarea>
+  
+  </div>
