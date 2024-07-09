@@ -9,6 +9,7 @@ import { CommentsComponent } from './components/comments/comments.component';
 import { FormsModule } from '@angular/forms';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { NoticiasComponent } from './components/noticias/noticias.component';
+import { ListaNoticiasComponent } from './components/lista-noticias/lista-noticias.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NoticiasComponent } from './components/noticias/noticias.component';
     RegisterComponent,
     CommentsComponent,
     InicioComponent,
-    NoticiasComponent
+    NoticiasComponent,
+    ListaNoticiasComponent
   ],
   imports: [
     BrowserModule,

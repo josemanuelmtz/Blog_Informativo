@@ -8,7 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    flex-direction: column;
+    
 }
 
 header {
@@ -23,7 +23,6 @@ header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-
 h1 {
     margin: 0;
     font-size: 2.5rem;
@@ -34,9 +33,9 @@ main {
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 90%; /* Incrementar el ancho al 90% de la pantalla */
-    max-width: 800px; /* Ajustar el max-width a 800px */
-    margin-top: 100px; /* Añadir un margen superior para que no se superponga con el header */
+    width: 90%;
+    max-width: 800px;
+    margin-top: 120px; /* Añadir un margen superior para que no se superponga con el header */
 }
 
 .form-group {
@@ -74,8 +73,39 @@ button {
     font-size: 1.2rem; /* Incrementar el tamaño de la fuente */
     transition: background-color 0.3s ease;
     width: 100%;
+    margin-bottom: 20px;
 }
 
 button:hover {
     background-color: #495057;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.actions button {
+    padding: 5px 10px;
+    font-size: 0.9rem;
 }
