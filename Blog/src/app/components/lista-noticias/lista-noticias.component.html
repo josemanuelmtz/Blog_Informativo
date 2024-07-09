@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Noticias</title>
+    <link rel="stylesheet" href="lista-noticias.component.css">
+</head>
+<body>
+    <header>
+        <h1>Noticias Publicadas</h1>
+    </header>
+    <main>
+        <table id="newsTable">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Contenido</th>
+                    <th>Autor</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Noticia 1</td>
+                    <td>Contenido de la noticia 1.</td>
+                    <td>Autor 1</td>
+                    <td>2024-07-01</td>
+                    <td class="actions">
+                        <button onclick="editNews(this)">Editar</button>
+                        <button onclick="deleteNews(this)">Eliminar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Noticia 2</td>
+                    <td>Contenido de la noticia 2.</td>
+                    <td>Autor 2</td>
+                    <td>2024-07-02</td>
+                    <td class="actions">
+                        <button onclick="editNews(this)">Editar</button>
+                        <button onclick="deleteNews(this)">Eliminar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Noticia 3</td>
+                    <td>Contenido de la noticia 3.</td>
+                    <td>Autor 3</td>
+                    <td>2024-07-03</td>
+                    <td class="actions">
+                        <button onclick="editNews(this)">Editar</button>
+                        <button onclick="deleteNews(this)">Eliminar</button>
+                    </td>
+                </tr>
+                <!-- Las noticias se agregarán aquí dinámicamente -->
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

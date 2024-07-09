@@ -10,23 +10,20 @@
     <header>
         <h1>Crear Noticia</h1>
     </header>
+    <br>
     <main>
         <form id="newsForm">
             <div class="form-group">
                 <label for="title">Título</label>
-                <input type="text" id="title" name="title" required>
+                <input type="text" id="title" name="title" placeholder="Título de la noticia" required>
+            </div>
+            <div class="form-group">
+                <label for="image">Subir Imagen</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
             </div>
             <div class="form-group">
                 <label for="content">Contenido</label>
-                <textarea id="content" name="content" rows="10" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="author">Autor</label>
-                <input type="text" id="author" name="author" required>
-            </div>
-            <div class="form-group">
-                <label for="date">Fecha</label>
-                <input type="date" id="date" name="date" required>
+                <textarea id="content" name="content" rows="10" placeholder="Ingrese el contenido de la noticia" required></textarea>
             </div>
             <button type="submit">Publicar</button>
         </form>
@@ -34,3 +31,4 @@
     <script src="noticias.js"></script>
 </body>
 </html>
+
