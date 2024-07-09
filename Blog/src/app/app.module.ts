@@ -8,6 +8,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { FormsModule } from '@angular/forms';
 import { InicioComponent } from './components/inicio/inicio.component';
+import { NoticiasComponent } from './components/noticias/noticias.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { InicioComponent } from './components/inicio/inicio.component';
     LoginComponent,
     RegisterComponent,
     CommentsComponent,
-    InicioComponent
+    InicioComponent,
+    NoticiasComponent
   ],
   imports: [
     BrowserModule,

@@ -1,33 +1,66 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: beige;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
 }
 .tabs {
     display: flex;
-    margin-bottom: 10px;
+    margin: 20px;
+    justify-content: space-around;
 }
 .tabs div {
-    margin-right: 10px;
-    padding: 10px;
-    border: 1px solid #000;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
+}
+.tabs div:hover {
+    background-color: #45a049;
 }
 .content {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+.content img {
     width: 100%;
-    height: 200px;
-    border: 1px solid #000;
-    margin-bottom: 10px;
+    border-radius: 10px;
 }
 .text {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     height: 300px;
     overflow-y: scroll;
-    border: 1px solid #000;
-    padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 .comments {
-    border: 1px solid #000;
-    padding: 10px;
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.comments a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: inline-block;
 }
 .comment {
     display: flex;
@@ -36,8 +69,20 @@ body {
 }
 .comment textarea {
     width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
     margin-right: 10px;
 }
 .comment button {
-    padding: 5px 10px;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.comment button:hover {
+    background-color: #45a049;
 }
