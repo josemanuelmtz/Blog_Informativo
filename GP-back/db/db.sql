@@ -1,71 +1,46 @@
-CREATE DATABASE db_tareas;
+-- Crear la base de datos
+CREATE DATABASE IF NOT EXISTS Blog;
 
-USE db_tareas;
+-- Usar la base de datos creada
+USE Blog;
 
-CREATE TABLE usuario (
+-- Tabla de Usuarios
+CREATE TABLE IF NOT EXISTS usuario (
     id_u INT PRIMARY KEY AUTO_INCREMENT,
     usuario VARCHAR(50),
     correo VARCHAR(50),
-    contrasena VARCHAR(100),
-    resetToken VARCHAR(255) DEFAULT NULL,
-    resetExpires DATETIME DEFAULT NULL,
-    estado_u INT DEFAULT 1,
-    FOREIGN KEY (estado_u) REFERENCES estado_u(id_e)
+    contrasena VARCHAR(100)
 );
 
-CREATE TABLE estado_u (
-    id_e INT PRIMARY KEY,
-    estado VARCHAR(10)
-);
-INSERT INTO estado_u
-(`id_e`,
-`estado`)
-VALUES
-(1, "Activo"),
-(2, "Inactivo");
-
-
-
-CREATE TABLE proyecto (
-	id_p INT PRIMARY KEY AUTO_INCREMENT,
-    id_u INT,
-    nom_p VARCHAR(50),
-    des_p VARCHAR(100),
-    fecha_i datetime,
-    fecha_f datetime,
-    FOREIGN KEY (id_u) REFERENCES usuario(id_u)
+-- Tabla de Noticias
+CREATE TABLE IF NOT EXISTS noticias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    contenido TEXT,
+    autor_id INT,
+    fecha_publicacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (autor_id) REFERENCES usuario(id_u)
 );
 
-CREATE TABLE integrantes (
-	id_p INT,
-    id_u INT,
-    FOREIGN KEY (id_p) REFERENCES proyecto(id_p),
-    FOREIGN KEY (id_u) REFERENCES usuario(id_u)
+-- Tabla de Comentarios
+CREATE TABLE IF NOT EXISTS comentarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    contenido TEXT,
+    usuario_id INT,
+    noticia_id INT,
+    fecha_comentario TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id_u),
+    FOREIGN KEY (noticia_id) REFERENCES noticias(id)
 );
 
-CREATE TABLE actividad (
-	id_a INT PRIMARY KEY AUTO_INCREMENT,
-    id_p INT,
-    id_u INT,
-    nom_a VARCHAR(50),
-    des_a VARCHAR(100),
-    estado INT DEFAULT 3,
-    fecha_fin datetime,
-    notas VARCHAR(200),
-    FOREIGN KEY (id_p) REFERENCES proyecto(id_p),
-    FOREIGN KEY (id_u) REFERENCES usuario(id_u),
-    FOREIGN KEY (estado) REFERENCES estado_act(id_e)
-    
+CREATE TABLE IF NOT EXISTS reportes_comentarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+	motivo TEXT,
+    comentario_id INT,
+    usuario_reporte_id INT,
+    fecha_reporte TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (comentario_id) REFERENCES comentarios(id),
+    FOREIGN KEY (usuario_reporte_id) REFERENCES usuario(id_u)
 );
-
-CREATE TABLE estado_act (
-id_e INT PRIMARY KEY,
-nom_e VARCHAR(15)
-);
-INSERT INTO estado_act
-(`id_e`,
-`nom_e`)
-VALUES
-(1, "Terminada"),
-(2, "En Pausa"),
-(3, "Sin Finalizar");
+select*from usuario;
+INSERT INTO usuario (usuario, correo, contrasena) VALUES ('Juan', 'juan@gmail.com', '123456');
