@@ -7,15 +7,15 @@ import { NoticiasComponent } from './components/noticias/noticias.component';
 import { ListaNoticiasComponent } from './components/lista-noticias/lista-noticias.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent},
+  { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'inicio', component: InicioComponent},
-  { path: 'noticias', component: NoticiasComponent},
-  { path: 'listadonoticias', component: ListaNoticiasComponent}
+  { path: 'dd', component: NoticiasComponent},
+  { path: 'lista', component: ListaNoticiasComponent},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{ useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

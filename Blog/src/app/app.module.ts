@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { NoticiasComponent } from './components/noticias/noticias.component';
 import { ListaNoticiasComponent } from './components/lista-noticias/lista-noticias.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ListaNoticiasComponent } from './components/lista-noticias/lista-notici
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration()
