@@ -1,9 +1,8 @@
-import {Router} from 'express'
-import { register, checkUserExists} from '../controllers/register.controller.js';
+import express from 'express';
+import { register } from '../controllers/register.controller.js';
 
-const router = Router()
+const router = express.Router();
 
-// Ruta para registrar un nuevo usuario
 router.post('/register', register);
-router.get('/checkuser', checkUserExists);
+
 export default router;
