@@ -7,11 +7,11 @@ import { NoticiasComponent } from './components/noticias/noticias.component';
 import { ListaNoticiasComponent } from './components/lista-noticias/lista-noticias.component';
 
 const routes: Routes = [
-  { path: 'ree', component: LoginComponent},
+  { path: '', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'inicio', component: InicioComponent},
-  { path: 'dd', component: NoticiasComponent},
-  { path: '', component: ListaNoticiasComponent}
+  { path: 'noticias', component: NoticiasComponent},
+  { path: 'listadonoticias', component: ListaNoticiasComponent}
 ];
 
 @NgModule({
