@@ -38,6 +38,7 @@ export class RegisterComponent {
     const newUser = { usuario: this.usuario, correo: this.correo, contrasena: this.contrasena };
 
     const url = 'http://localhost:3002/register'; // Ajusta el puerto y la ruta según tu configuración de Express
+    //const url = 'http://3.144.118.212:3002/register';
 
     this.http.post<any>(url, newUser).subscribe(
       response => {

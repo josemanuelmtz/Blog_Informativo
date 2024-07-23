@@ -33,8 +33,8 @@ export class LoginComponent {
       .set('usuario', this.usuario)
       .set('contrasena', this.contrasena);
 
-    //const url = 'http://localhost:3002/login'; // Asegúrate de ajustar el puerto y la ruta según tu configuración de Express
-    const url = 'http://18.218.24.14:3002/login';
+    const url = 'http://localhost:3002/login'; // Asegúrate de ajustar el puerto y la ruta según tu configuración de Express
+    //const url = 'http://3.144.118.212:3002/login';
 
     this.http.get<any>(url, { params }).subscribe(
       response => {

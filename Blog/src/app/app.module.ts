@@ -11,6 +11,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { NoticiasComponent } from './components/noticias/noticias.component';
 import { ListaNoticiasComponent } from './components/lista-noticias/lista-noticias.component';
 import { HttpClientModule } from '@angular/common/http';
+import { VistanoticiasComponent } from './components/vistanoticias/vistanoticias.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     CommentsComponent,
     InicioComponent,
     NoticiasComponent,
-    ListaNoticiasComponent
+    ListaNoticiasComponent,
+    VistanoticiasComponent
   ],
   imports: [
     BrowserModule,
