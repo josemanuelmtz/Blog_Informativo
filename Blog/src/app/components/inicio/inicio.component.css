@@ -1,99 +1,15 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-}
-.tabs {
-    display: flex;
-    margin: 20px;
-    justify-content: space-around;
-}
-.tabs div {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-.tabs div:hover {
-    background-color: #45a049;
-}
-.content {
-    width: 90%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-}
-.content img {
-    width: 100%;
-    border-radius: 10px;
-}
-.text {
-    width: 90%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: 300px;
-    overflow-y: scroll;
-    margin-bottom: 20px;
-}
-.comments {
-    width: 90%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-.comments a {
-    color: #4CAF50;
-    text-decoration: none;
-    font-weight: bold;
-    margin-bottom: 10px;
-    display: inline-block;
-}
-.comment {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-.comment textarea {
-    width: 80%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-right: 10px;
-}
-.comment button {
-    padding: 10px 15px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-.comment button:hover {
-    background-color: #45a049;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #1c1c1c;
+    background: #1c1c1c;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: #fff;
     margin: 0;
     padding: 0;
+    height: max-content;
+    
 }
+
 header {
     background-color: #343a40;
     color: #ffffff;
@@ -105,57 +21,78 @@ header {
     left: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.news-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 20px;
-}
-.news-item {
+
+.content {
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
     background-color: #333;
-    margin: 10px;
     border-radius: 10px;
-    overflow: hidden;
-    width: 300px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s;
 }
-.news-item:hover {
-    transform: scale(1.05);
-}
-.news-item img {
+.content img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: auto;
+    border-radius: 10px;
 }
-.news-item .content {
-    padding: 15px;
+.content h1 {
+    font-size: 2em;
+    margin-top: 20px;
 }
-.news-item h2 {
-    font-size: 1.2em;
-    margin: 10px 0;
+.content p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin: 20px 0;
 }
-.news-item .tag {
-    display: inline-block;
-    padding: 2px 8px;
-    background-color: #ffcc00;
-    color: #000;
+.content .date {
     font-size: 0.9em;
-    border-radius: 4px;
-    margin-bottom: 10px;
+    color: #aaa;
 }
-.news-item p {
-    font-size: 0.9em;
-    line-height: 1.4;
-    margin: 10px 0;
+
+.news-container {
+  margin-top: 110px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2 columnas si hay suficiente espacio, 1 columna en pantallas más pequeñas */
+  gap: 20px;
+  padding: 40px; /* Incrementar el padding para bajar las tarjetas */
+  height: 100%;
+  
 }
-.news-item .read-more {
-    color: #ffcc00;
-    font-size: 0.9em;
-    text-decoration: none;
-    display: block;
-    margin-top: 10px;
+
+.news-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  background-color: #fff;
+  color: black; /* Cambiar el color del texto a negro */
+  margin-bottom: 40px; /* Incrementar el margen inferior para mayor separación */
+  
 }
-.news-item .read-more:hover {
-    text-decoration: underline;
+
+.news-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.news-card h2 {
+  font-size: 1.5em;
+  margin-bottom: 8px;
+  color: black; /* Asegurarse de que el título también esté en negro */
+}
+
+.news-card .date {
+  font-size: 0.9em;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+.news-card p {
+  font-size: 1em;
+  margin-bottom: 12px;
+  color: black; /* Asegurarse de que el contenido también esté en negro */
+}
+
+.news-card .author {
+  font-size: 0.9em;
+  color: black; /* Asegurarse de que el autor también esté en negro */
 }

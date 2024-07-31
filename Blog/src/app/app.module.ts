@@ -6,12 +6,13 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CommentsComponent } from './components/comments/comments.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { NoticiasComponent } from './components/noticias/noticias.component';
 import { ListaNoticiasComponent } from './components/lista-noticias/lista-noticias.component';
 import { HttpClientModule } from '@angular/common/http';
 import { VistanoticiasComponent } from './components/vistanoticias/vistanoticias.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +23,15 @@ import { VistanoticiasComponent } from './components/vistanoticias/vistanoticias
     InicioComponent,
     NoticiasComponent,
     ListaNoticiasComponent,
-    VistanoticiasComponent
+    VistanoticiasComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [
     provideClientHydration()

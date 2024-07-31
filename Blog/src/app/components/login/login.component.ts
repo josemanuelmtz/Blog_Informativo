@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -33,17 +34,27 @@ export class LoginComponent {
       .set('usuario', this.usuario)
       .set('contrasena', this.contrasena);
 
-    const url = 'http://localhost:3002/login'; // Asegúrate de ajustar el puerto y la ruta según tu configuración de Express
-    //const url = 'http://3.144.118.212:3002/login';
+    //const url = 'http://localhost:3002/login'; // Asegúrate de ajustar el puerto y la ruta según tu configuración de Express
+    const url = 'http://18.218.24.14:3002/login';
 
     this.http.get<any>(url, { params }).subscribe(
       response => {
         if (response.message === 'Inicio de sesión exitoso') {
+          Swal.fire({
+            icon: 'success',
+            title: '¡Éxito!',
+            text: 'Inicio de sesión exitoso.'
+          });
           console.log('Inicio de sesión exitoso');
           this.router.navigate(['/inicio']);
           // Aquí puedes redirigir a otra página o manejar el éxito del inicio de sesión
         } else {
           console.error('Credenciales incorrectas');
+          Swal.fire({
+            icon: 'error',
+            title: '¡Error!',
+            text: 'El usuario y/o contraseña son incorrectos.'
+          });
           // Aquí puedes mostrar un mensaje al usuario indicando que las credenciales son incorrectas
         }
       },

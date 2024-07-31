@@ -17,7 +17,7 @@
         <input type="text" placeholder="Nombre de Usuario" (input)="onInputUsuario($event)">
       </div>
       <div class="inputBx">
-        <input type="password" placeholder="Contraseña" (input)="onInputContrasena($event)">
+        <input type="password" placeholder="Contraseña" minlength="8" maxlength="20" (input)="onInputContrasena($event)">
       </div>
       <div class="inputBx">
         <input type="submit" value="Inicia Sesion" (click)="login()">

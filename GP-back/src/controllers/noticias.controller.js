@@ -55,16 +55,16 @@ export const getNoticiaById = async (req, res) => {
 // Actualizar noticia por id
 export const updateNoticiaById = async (req, res) => {
   const { id } = req.params;
-  const { titulo, contenido, autor_id } = req.body;
+  const { titulo, contenido} = req.body;
 
-  if (!titulo || !contenido || !autor_id) {
+  if (!titulo || !contenido ) {
     return res.status(400).json({ message: 'Por favor, proporcione todos los datos requeridos' });
   }
 
   try {
     const [result] = await pool.query(
-      'UPDATE noticias SET titulo = ?, contenido = ?, autor_id = ? WHERE id = ?',
-      [titulo, contenido, autor_id, id]
+      'UPDATE noticias SET titulo = ?, contenido = ? WHERE id = ?',
+      [titulo, contenido, id]
     );
     if (result.affectedRows === 0) {
       return res.status(404).json({ message: 'Noticia no encontrada' });

@@ -6,14 +6,16 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { NoticiasComponent } from './components/noticias/noticias.component';
 import { ListaNoticiasComponent } from './components/lista-noticias/lista-noticias.component';
 import { VistanoticiasComponent } from './components/vistanoticias/vistanoticias.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent},
+  { path: '', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'inicio', component: InicioComponent},
   { path: 'dd', component: NoticiasComponent},
   { path: 'lista', component: ListaNoticiasComponent},
   { path: 'vistanoticias', component: VistanoticiasComponent},
+  { path: 'footer', component: FooterComponent},
 ];
 
 @NgModule({
