@@ -13,18 +13,34 @@
     <i style="--clr:#fffd44;"></i>
     <div class="login">
       <h2>Registro</h2>
-      <div class="inputBx">
-        <input type="text" placeholder="Nombre de Usuario" (input)="onInputUsuario($event)">
-      </div>
-      <div class="inputBx">
-        <input type="text" placeholder="Correo" (input)="onInputCorreo($event)">
-      </div>
-      <div class="inputBx">
-        <input type="password" placeholder="Contraseña" (input)="onInputContrasena($event)">
-      </div>
-      <div class="inputBx">
-        <input type="submit" value="Registrar" (click)="register()">
-      </div>
+      <form [formGroup]="registroForm" (ngSubmit)="register()">
+        <div class="inputBx">
+          <input formControlName="usuario" placeholder="Nombre de Usuario"/>
+          <div *ngIf="usuario?.invalid && (usuario?.dirty || usuario?.touched)">
+            <small style="color: white;" *ngIf="usuario?.errors?.['required']">El nombre de usuario es obligatorio.</small>
+          </div>
+        </div>
+        <br>      
+        <div class="inputBx">
+          <input formControlName="correo" placeholder="Correo"/>
+          <div *ngIf="correo?.invalid && (correo?.dirty || correo?.touched)">
+            <small style="color: white;" *ngIf="correo?.errors?.['required']">El correo electrónico es obligatorio.</small>
+            <small style="color: white;" *ngIf="correo?.errors?.['email']">Debe ingresar un correo electrónico válido.</small>
+          </div>
+        </div>
+        <br>      
+        <div class="inputBx">
+          <input formControlName="contrasena" type="password" placeholder="Contraseña"/>
+          <div *ngIf="contrasena?.invalid && (contrasena?.dirty || contrasena?.touched)">
+            <small style="color: white;" *ngIf="contrasena?.errors?.['required']">La contraseña es obligatoria.</small>
+            <small style="color: white;" *ngIf="contrasena?.errors?.['minlength']">La contraseña debe tener al menos 8 caracteres.</small>
+          </div>
+        </div>
+        <br>
+        <div class="inputBx">
+          <button type="submit" [disabled]="registroForm.invalid">Registrar</button>
+        </div>
+      </form>    
     </div>
   </div>
 </body>

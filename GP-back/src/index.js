@@ -2,7 +2,6 @@ import express from 'express';
 import cors from 'cors';
 import login from './routes/login.routes.js';
 import register from './routes/register.routes.js';
-import usuarios from './routes/usuarios.routes.js';
 import noticias from './routes/noticias.routes.js';
 
 const app = express();
@@ -13,7 +12,6 @@ app.use(cors());
 app.use(login);
 app.use(register);
 app.use(noticias);
-app.use(usuarios);
 
 
 app.listen(3002)

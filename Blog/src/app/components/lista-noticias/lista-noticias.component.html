@@ -1,7 +1,13 @@
+<html>
+<link rel="stylesheet" href="lista-noticias.component.css">
 <header>
     <h1>Noticias Publicadas</h1>
 </header>
 <main>
+    <div style="display: flex; justify-content: end;">
+        <button (click)="openCreateModal()">Crear Noticia</button>
+    </div>
+    
     <table id="newsTable">
         <thead>
             <tr>
@@ -16,47 +22,55 @@
             <tr *ngFor="let noticia of noticias">
                 <td>{{ noticia.titulo }}</td>
                 <td>{{ noticia.contenido }}</td>
-                <td>{{ noticia.autor }}</td>
-                <td>{{ noticia.fecha }}</td>
+                <td>{{ noticia.nombre_autor }}</td>
+                <td>{{ noticia.fecha_publicacion | date:'short' }}</td>
                 <td class="actions">
-                    <button (click)="editNews(noticia)">Editar</button>
-                    <button (click)="deleteNews(noticia)">Eliminar</button>
+                    <button class="nuevo" (click)="editNews(noticia)">Editar</button>
+                    <button class="nuevo" (click)="deleteNews(noticia)">Eliminar</button>
                 </td>
             </tr>
         </tbody>
     </table>
+
+<!-- Modal para editar noticia -->
+<div class="modal" [class.show]="showEditModal">
+    <div class="modal-content">
+        <span class="close" (click)="closeEditModal()">&times;</span>
+        <h2>Editar Noticia</h2>
+        <form (ngSubmit)="onEditSubmit()">
+            <div class="form-group">
+                <label for="editTitle">Título</label>
+                <input type="text" id="editTitle" [(ngModel)]="currentNoticia.titulo" name="editTitle" required>
+            </div>
+            <div class="form-group">
+                <label for="editContent">Contenido</label>
+                <textarea id="editContent" [(ngModel)]="currentNoticia.contenido" name="editContent" rows="10" required></textarea>
+            </div>
+            <button type="submit">Guardar Cambios</button>
+        </form>
+    </div>
+</div>
+
     
-    <!-- Modal para editar noticia -->
-    <div class="modal" [class.show]="showEditModal">
+        
+    <!-- Modal para crear noticia -->
+    <div class="modal" [class.show]="showCreateModal">
         <div class="modal-content">
-            <span class="close" (click)="closeEditModal()">&times;</span>
-            <h2>Editar Noticia</h2>
-            <form (ngSubmit)="onEditSubmit()">
+            <span class="close" (click)="closeCreateModal()">&times;</span>
+            <h2>Crear Noticia</h2>
+            <form (ngSubmit)="onCreateSubmit()">
                 <div class="form-group">
-                    <label for="editTitle">Título</label>
-                    <input type="text" id="editTitle" [(ngModel)]="currentNoticia" name="editTitle" required>
+                    <label for="createTitle">Título</label>
+                    <input type="text" id="createTitle" [(ngModel)]="newNoticia.titulo" name="createTitle" required>
                 </div>
                 <div class="form-group">
-                    <label for="editContent">Contenido</label>
-                    <textarea id="editContent" [(ngModel)]="currentNoticia" name="editContent" rows="10" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="editAuthor">Autor</label>
-                    <input type="text" id="editAuthor" [(ngModel)]="currentNoticia" name="editAuthor" required>
+                    <label for="createContent">Contenido</label>
+                    <textarea id="createContent" [(ngModel)]="newNoticia.contenido" name="createContent" rows="10" required></textarea>
                 </div>
                 <button type="submit">Guardar Cambios</button>
             </form>
         </div>
     </div>
-    
-    <!-- Modal para confirmar eliminación -->
-    <div class="modal" [class.show]="showDeleteModal">
-        <div class="modal-content">
-            <span class="close" (click)="closeDeleteModal()">&times;</span>
-            <h2>Confirmar Eliminación</h2>
-            <p>¿Está seguro de que desea eliminar esta noticia?</p>
-            <button (click)="confirmDelete()">Sí, eliminar</button>
-            <button (click)="closeDeleteModal()">Cancelar</button>
-        </div>
-    </div>        
 </main>
+<br>
+</html>

@@ -1,45 +1,3 @@
-<!--<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Una Página Web</title>
-    <link rel="stylesheet" href="inicio.component.css">
-</head>
-<body>
-
-    <div class="tabs">
-        <div>Tecnología</div>
-        <div>Entretenimiento</div>
-        <div>Noticias</div>
-    </div>
-
-    <div class="content">
-        <img src="https://via.placeholder.com/800x200" alt="Imagen">
-    </div>
-
-    <div class="text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.
-        <br><br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.
-        <br><br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.
-    </div>
-
-    <div class="comments">
-        <a href="#">Agregar Comentario</a>
-        <div class="comment">
-            <textarea rows="3">Lorem ipsum</textarea>
-            <button>Responder</button>
-        </div>
-        <div class="comment">
-            <textarea rows="3">Lorem ipsum</textarea>
-            <button>Responder</button>
-        </div>
-    </div>
-
-</body>
-</html>-->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -49,12 +7,22 @@
     <link rel="stylesheet" href="inicio.component.css">
 </head>
 <body>
+
 <header>
-    <h1>Últimas Noticias</h1>
+    <h1>Noticias</h1>
 </header>
-    <section class="news-container" id="newsContainer">
-        <!-- Aquí se insertarán las noticias dinámicamente -->
-         
-    </section>
+
+
+<div class="news-container">
+  <div *ngFor="let noticia of noticias" class="news-card">
+    <h2>{{ noticia.titulo }}</h2>
+    <div class="date">{{ noticia.fecha_publicacion | date:'longDate' }}</div>
+    <p>{{ noticia.contenido }}</p>
+    <div class="author">Escrito por {{ noticia.nombre_autor }}</div>
+  </div>
+</div>
+
+
+
 </body>
 </html>
