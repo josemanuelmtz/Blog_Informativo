@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS usuario (
     usuario VARCHAR(50),
     correo VARCHAR(50),
     contrasena VARCHAR(100)
+    rol boolean
 );
 
 -- Tabla de Noticias
@@ -44,7 +45,7 @@ CREATE TABLE IF NOT EXISTS reportes_comentarios (
 );
 select*from usuario;
 select*from noticias;
-INSERT INTO usuario (usuario, correo, contrasena) VALUES ('Juan', 'juan@gmail.com', '123456');
+INSERT INTO usuario (usuario, correo, contrasena, id) VALUES ('Juan', 'juan@gmail.com', 'JuandeDios1897$');
 -- Insertar noticias
 INSERT INTO noticias (titulo, contenido, autor_id) VALUES 
 ('NASA Discovers New Exoplanet', 'NASA has announced the discovery of a new exoplanet that may be capable of supporting life. The planet, named Kepler-1649c, is located in the habitable zone of its star and is similar in size and temperature to Earth.', 1),

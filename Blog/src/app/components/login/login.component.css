@@ -6,13 +6,15 @@
   font-family: "Quicksand", sans-serif;
 }
 body {
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   background-color: black;
 }
+
 .ring {
   position: relative;
   width: 500px;
@@ -110,4 +112,29 @@ body {
 .login .links a {
   color: #fff;
   text-decoration: none;
+}
+
+/* Botones */
+button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s ease; /* Transición de color */
+}
+
+button:hover {
+  background-color: #0056b3; /* Color más oscuro en hover */
+}
+
+button.cancel {
+  background-color: #6c757d; /* Color diferente para el botón de cancelar */
+}
+
+button.cancel:hover {
+  background-color: #5a6268;
 }

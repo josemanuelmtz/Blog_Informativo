@@ -1,8 +1,13 @@
-<html>
+
 <link rel="stylesheet" href="lista-noticias.component.css">
-<header>
-    <h1>Noticias Publicadas</h1>
-</header>
+<nav class="navbar">
+    <a href="/inicio" class="logo">Blog Informativo</a>
+    <ul>
+        <li><a href="/inicio">Inicio</a></li>
+        <li *ngIf="role === '1'"><a routerLink="/lista">Crear Noti</a></li>
+        <li><a href="">Logout</a></li>
+    </ul>
+</nav>
 <main>
     <div style="display: flex; justify-content: end;">
         <button (click)="openCreateModal()">Crear Noticia</button>
@@ -73,4 +78,10 @@
     </div>
 </main>
 <br>
-</html>
+<footer>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Empresa. Todos los derechos reservados.</p>
+      <p>Contactanos: martinezgarciajosemanuel225&#64;gmail.com</p>
+      <p><a href="https://www.privacypolicies.com/live/7dc13845-9481-4cb4-819f-3d2eb937ceba">Política de privacidad</a></p>
+    </div>
+  </footer>

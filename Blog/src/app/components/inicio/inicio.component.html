@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noticias</title>
-    <link rel="stylesheet" href="inicio.component.css">
+    <title>Blog Informativo</title>
+    <link rel="stylesheet" href="inicio.component.css"> <!-- Enlace al archivo CSS -->
 </head>
 <body>
-
-<header>
-    <h1>Noticias</h1>
-</header>
-
-
+  <nav class="navbar">
+    <a href="/#/inicio" class="logo">Blog Informativo</a>
+    <ul>
+        <li><a href="/#/inicio">Inicio</a></li>
+        <li *ngIf="role === '1'"><a routerLink="/lista2">Crear Noticia</a></li>
+        <li><a href="">Logout</a></li>
+    </ul>
+</nav>
+<br>
+<br> 
 <div class="news-container">
   <div *ngFor="let noticia of noticias" class="news-card">
     <h2>{{ noticia.titulo }}</h2>
@@ -21,8 +25,16 @@
     <div class="author">Escrito por {{ noticia.nombre_autor }}</div>
   </div>
 </div>
-
-
-
+<div>
+</div>
+<br>
+<br>
+<footer>
+  <div class="footer-bottom">
+    <p>&copy; 2024 Empresa. Todos los derechos reservados.</p>
+    <p>Contactanos: martinezgarciajosemanuel225&#64;gmail.com</p>
+    <p><a href="https://www.privacypolicies.com/live/7dc13845-9481-4cb4-819f-3d2eb937ceba">Política de privacidad</a></p>
+  </div>
+</footer>
 </body>
 </html>

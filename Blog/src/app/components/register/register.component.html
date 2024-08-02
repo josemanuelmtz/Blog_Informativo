@@ -34,6 +34,7 @@
           <div *ngIf="contrasena?.invalid && (contrasena?.dirty || contrasena?.touched)">
             <small style="color: white;" *ngIf="contrasena?.errors?.['required']">La contraseña es obligatoria.</small>
             <small style="color: white;" *ngIf="contrasena?.errors?.['minlength']">La contraseña debe tener al menos 8 caracteres.</small>
+            <small style="color: white;" *ngIf="contrasena?.errors?.['pattern']">Contraseña debe contener al menos una letra minúscula, una mayúscula, un carácter especial y tener una longitud mínima de ocho caracteres.</small>
           </div>
         </div>
         <br>

@@ -8,11 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioComponent implements OnInit {
   noticias: any[] = [];
+  role: string | null = null;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get<any[]>('http://localhost:3002/noticias').subscribe(
+    const storedRole = localStorage.getItem('userRole');
+    console.log('Stored role:', storedRole); // Depuración
+    this.role = storedRole;
+    this.http.get<any[]>('https://3.147.61.80:3002/noticias').subscribe(
       data => {
         this.noticias = data;
       },
@@ -21,4 +25,7 @@ export class InicioComponent implements OnInit {
       }
     );
   }
+
+  
 }
+
