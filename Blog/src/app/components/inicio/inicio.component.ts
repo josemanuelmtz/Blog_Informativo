@@ -16,7 +16,7 @@ export class InicioComponent implements OnInit {
     const storedRole = localStorage.getItem('userRole');
     console.log('Stored role:', storedRole); // Depuración
     this.role = storedRole;
-    this.http.get<any[]>('http://localhost:3002/noticias').subscribe(
+    this.http.get<any[]>('https://3.147.61.80:3002/noticias').subscribe(
       data => {
         this.noticias = data;
       },

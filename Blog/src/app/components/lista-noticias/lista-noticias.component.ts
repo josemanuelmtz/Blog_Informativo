@@ -44,7 +44,7 @@ export class ListaNoticiasComponent implements OnInit {
   }
 
   loadNoticias() {
-    this.http.get<Noticia[]>('http://localhost:3002/noticias').subscribe(data => {
+    this.http.get<Noticia[]>('https://3.147.61.80:3002/noticias').subscribe(data => {
       this.noticias = data;
     });
   }
@@ -116,7 +116,7 @@ onEditSubmit() {
         const { id, titulo, contenido } = this.currentNoticia;
         const autor_id = 1; // Ajusta esto según tu lógica
 
-        this.http.put(`http://localhost:3002/noticias/${id}`, { titulo, contenido, autor_id }).subscribe(() => {
+        this.http.put(`https://3.147.61.80:3002/noticias/${id}`, { titulo, contenido, autor_id }).subscribe(() => {
           const index = this.noticias.findIndex(n => n.id === id);
           if (index !== -1) {
             this.noticias[index] = { 
@@ -140,7 +140,7 @@ onEditSubmit() {
   confirmDelete() {
     if (this.noticiaToDelete) {
       const noticiaId = this.noticiaToDelete.id;
-      this.http.delete(`http://localhost:3002/noticias/${noticiaId}`).subscribe(() => {
+      this.http.delete(`https://3.147.61.80:3002/noticias/${noticiaId}`).subscribe(() => {
         const index = this.noticias.findIndex(n => n.id === noticiaId);
         if (index !== -1) {
           this.noticias.splice(index, 1);
@@ -155,7 +155,7 @@ onEditSubmit() {
     const { titulo, contenido } = this.newNoticia;
     const autor_id = 1; // Suponiendo un autor_id estático por simplicidad, deberías ajustar esto según tu lógica
 
-    this.http.post<{ id: number }>(`http://localhost:3002/noticias`, { titulo, contenido, autor_id }).subscribe(response => {
+    this.http.post<{ id: number }>(`https://3.147.61.80:3002/noticias`, { titulo, contenido, autor_id }).subscribe(response => {
       const nuevaNoticia: Noticia = {
         id: response.id,
         titulo: titulo!,

@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
       }
   
       const { usuario, contrasena } = this.loginForm.value;
-      const url = 'http://localhost:3002/login';
+      const url = 'https://3.147.61.80:3002/login';
       const credentials = { usuario, contrasena };
       console.log(url);
       console.log(credentials);
