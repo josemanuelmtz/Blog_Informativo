@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit{
     this.registroForm = this.fb.group({
       usuario: ['', Validators.required],
       correo: ['', [Validators.required, Validators.email]],
-      contrasena: ['', [Validators.required, Validators.minLength(6)]]
+      contrasena: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*\\d).{8,}$')]]
     });
   }
 /*
@@ -69,6 +69,7 @@ export class RegisterComponent implements OnInit{
       return;
     }
   }
+
 /*
   register() {
     if (!this.usuario || !this.correo || !this.contrasena) {
@@ -82,7 +83,6 @@ export class RegisterComponent implements OnInit{
       console.error('Por favor, complete todos los campos');
       return;
     }
-
     Swal.fire({
       title: '¿Estás seguro?',
       html: `

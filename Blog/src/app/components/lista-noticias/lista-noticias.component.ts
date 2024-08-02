@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { AuthService } from '../../services/auth.service';
 
 interface Noticia {
   id: number;
@@ -17,6 +18,7 @@ interface Noticia {
 })
 export class ListaNoticiasComponent implements OnInit {
   noticias: Noticia[] = [];
+    role: string;
   
   showEditModal: boolean = false;
   showDeleteModal: boolean = false;
@@ -31,10 +33,14 @@ export class ListaNoticiasComponent implements OnInit {
   noticiaToDelete!: Noticia;
   newNoticia: Partial<Noticia> = {}; // Se usa Partial para permitir campos opcionales al crear
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   ngOnInit() {
     this.loadNoticias();
+    const storedRole = localStorage.getItem('userRole');
+    console.log('Stored role:', storedRole); // Depuración
+    this.role = storedRole;
+
   }
 
   loadNoticias() {
@@ -55,6 +61,7 @@ export class ListaNoticiasComponent implements OnInit {
     this.showDeleteModal = true;
   }
 */
+
   openCreateModal() {
     this.newNoticia = {}; // Resetear campos al abrir el modal
     this.showCreateModal = true;
@@ -143,6 +150,7 @@ onEditSubmit() {
     }
   }
 
+
   onCreateSubmit() {
     const { titulo, contenido } = this.newNoticia;
     const autor_id = 1; // Suponiendo un autor_id estático por simplicidad, deberías ajustar esto según tu lógica
@@ -159,20 +167,13 @@ onEditSubmit() {
       this.ngOnInit(); 
       this.closeCreateModal();
     });
+    Swal.fire({
+      title: 'Éxito',
+      text: 'Noticia creada con éxito',
+      icon: 'success',
+    })
   }
-/*
-  Swal.fire({
-    title: '¿Estás seguro?',
-    text: "No podrás revertir esto!",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonText: 'Sí, elimínalo!',
-    cancelButtonText: 'No, cancelar!',
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire('Eliminado!', 'Tu archivo ha sido eliminado.', 'success');
-    }
-  });*/
+    
 /*
   confirmDelete() {
     if (this.noticiaToDelete) {
@@ -198,7 +199,9 @@ onEditSubmit() {
       });
     }
   }*/
+    
   
+
     deleteNews(noticia: Noticia) {
       this.noticiaToDelete = noticia;
     
@@ -219,5 +222,48 @@ onEditSubmit() {
         }
       });
     }
+
+  /*
+    onCreateSubmit(): void {
+      const { titulo, contenido } = this.newNoticia;
+      const autor_id = this.authService.token(); // Obtén el ID del usuario autenticado
   
+      if (!autor_id) {
+        console.error('No se ha encontrado el ID del usuario.');
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'No se ha encontrado el ID del usuario.'
+        });
+        return;
+      }
+  
+      this.http.post<{ id: number }>(`http://localhost:3002/noticias`, { titulo, contenido, autor_id }, { headers: this.authService.getHttpHeaders() }).subscribe(
+        response => {
+          const nuevaNoticia: Noticia = {
+            id: response.id,
+            titulo: titulo!,
+            contenido: contenido!,
+            nombre_autor: 'Desconocido', // Esto puede ser mejorado si obtienes el nombre del autor
+            fecha_publicacion: new Date().toISOString()
+          };
+          this.noticias.push(nuevaNoticia);
+          this.newNoticia = { titulo: '', contenido: '' }; // Limpiar el formulario
+          this.closeCreateModal();
+          Swal.fire({
+            icon: 'success',
+            title: '¡Éxito!',
+            text: 'Noticia creada con éxito.'
+          });
+        },
+        error => {
+          console.error('Error al crear la noticia:', error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Ocurrió un problema al crear la noticia. Por favor, inténtelo más tarde.'
+          });
+        }
+      );
+    }*/
 }

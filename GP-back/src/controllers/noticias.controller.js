@@ -1,6 +1,7 @@
 import { pool } from '../db.js';
 
 // Crear noticia
+/*
 export const createNoticia = async (req, res) => {
   const { titulo, contenido, autor_id } = req.body;
 
@@ -18,7 +19,27 @@ export const createNoticia = async (req, res) => {
     console.error('Error al crear la noticia:', error);
     return res.status(500).json({ message: 'Error en el servidor' });
   }
+};*/
+
+
+export const createNoticia = async (req, res) => {
+  const { titulo, contenido, autor_id } = req.body;
+
+  if (!titulo || !contenido || !autor_id) {
+    return res.status(400).json({ message: 'Faltan campos requeridos.' });
+  }
+
+  try {
+    const [result] = await pool.query('INSERT INTO noticias (titulo, contenido, autor_id) VALUES (?, ?, ?)', [titulo, contenido, autor_id]);
+    const insertedId = result.insertId;
+
+    res.status(201).json({ id: insertedId });
+  } catch (error) {
+    console.error('Error al insertar la noticia:', error);
+    res.status(500).json({ message: 'Error en el servidor' });
+  }
 };
+
 
 // Leer todas las noticias
 export const getNoticias = async (req, res) => {

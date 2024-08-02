@@ -1,67 +1,113 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  usuario: string = '';
-  contrasena: string = '';
+export class LoginComponent implements OnInit {
+  loginForm: FormGroup | any;
 
-  constructor(private http: HttpClient,private router: Router) {}
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private authService: AuthService) { }
 
-  onInputUsuario(event: Event) {
-    const inputElement = event.target as HTMLInputElement;
-    this.usuario = inputElement.value;
+  ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      contrasena: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]]
+    });
   }
 
-  onInputContrasena(event: Event) {
-    const inputElement = event.target as HTMLInputElement;
-    this.contrasena = inputElement.value;
+  get usuario() {
+    return this.loginForm.get('usuario');
   }
 
+  get contrasena() {
+    return this.loginForm.get('contrasena');
+  }
+
+/*
   login() {
-    if (!this.usuario || !this.contrasena) {
-      console.error('Por favor, proporcione usuario y contraseña');
+    if (this.loginForm.invalid) {
       return;
     }
 
-    const params = new HttpParams()
-      .set('usuario', this.usuario)
-      .set('contrasena', this.contrasena);
+    const { usuario, contrasena } = this.loginForm.value;
+    const url = 'http://localhost:3002/login';
+    const credentials = { usuario, contrasena };
 
-    //const url = 'http://localhost:3002/login'; // Asegúrate de ajustar el puerto y la ruta según tu configuración de Express
-    const url = 'http://18.218.24.14:3002/login';
-
-    this.http.get<any>(url, { params }).subscribe(
+    this.http.post<any>(url, credentials).subscribe(
       response => {
         if (response.message === 'Inicio de sesión exitoso') {
+          this.authService.setToken(response.token, response.role, response.id_u);  // Almacena el token y el rol
           Swal.fire({
             icon: 'success',
             title: '¡Éxito!',
             text: 'Inicio de sesión exitoso.'
           });
-          console.log('Inicio de sesión exitoso');
           this.router.navigate(['/inicio']);
-          // Aquí puedes redirigir a otra página o manejar el éxito del inicio de sesión
         } else {
-          console.error('Credenciales incorrectas');
           Swal.fire({
             icon: 'error',
             title: '¡Error!',
             text: 'El usuario y/o contraseña son incorrectos.'
           });
-          // Aquí puedes mostrar un mensaje al usuario indicando que las credenciales son incorrectas
         }
       },
       error => {
-        console.error('Error en el inicio de sesión:', error);
-        // Aquí puedes manejar errores de conexión u otros errores que puedan ocurrir
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Ocurrió un problema con el inicio de sesión. Por favor, inténtelo más tarde.'
+        });
       }
     );
-  }
+  }*/
+    login() {
+      if (this.loginForm.invalid) {
+        return;
+      }
+  
+      const { usuario, contrasena } = this.loginForm.value;
+      const url = 'http://localhost:3002/login';
+      const credentials = { usuario, contrasena };
+      console.log(url);
+      console.log(credentials);
+      this.http.post<any>(url, credentials).subscribe(
+        
+        response => {
+          this.authService.setToken(response.token, response.user.rol, response.user.id_u);
+          
+          if (response.message === 'Inicio de sesión exitoso') {
+            console.log('ROL:' + response.user.rol);
+            console.log(response.message);
+            // Almacena el token, el rol y el ID del usuario
+            Swal.fire({
+              icon: 'success',
+              title: '¡Éxito!',
+              text: 'Inicio de sesión exitoso.'
+            });
+              this.router.navigate(['/inicio']);
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: '¡Error!',
+              text: 'El usuario y/o contraseña son incorrectos.'
+            });
+          }
+        },
+        error => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Ocurrió un problema con el inicio de sesión. Por favor, inténtelo más tarde.'
+          });
+        }
+      );
+    }
+  
 }

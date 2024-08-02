@@ -12,7 +12,6 @@ import { NoticiasComponent } from './components/noticias/noticias.component';
 import { ListaNoticiasComponent } from './components/lista-noticias/lista-noticias.component';
 import { HttpClientModule } from '@angular/common/http';
 import { VistanoticiasComponent } from './components/vistanoticias/vistanoticias.component';
-import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,6 @@ import { FooterComponent } from './components/footer/footer.component';
     NoticiasComponent,
     ListaNoticiasComponent,
     VistanoticiasComponent,
-    FooterComponent
   ],
   imports: [
     BrowserModule,
