@@ -8,7 +8,7 @@ import { NewsService } from './news-service.interface';
   providedIn: 'root'
 })
 export class NewsApiService implements NewsService {
-  private apiUrl = 'http://3.135.217.231:3002/noticias';
+  private apiUrl = 'https://3.135.217.231:3002/noticias';
 
   constructor(private http: HttpClient) {}
 

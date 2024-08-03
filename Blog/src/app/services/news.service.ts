@@ -18,7 +18,7 @@ export class NewsService {
   private noticiasSubject = new BehaviorSubject<Noticia[]>([]);
   noticias$ = this.noticiasSubject.asObservable(); // Observable para suscribirse
 
-  private apiUrl = 'http://3.135.217.231:3002/noticias';
+  private apiUrl = 'https://3.135.217.231:3002/noticias';
 
   constructor(private http: HttpClient) {
     this.loadNoticias(); // Carga inicial de datos

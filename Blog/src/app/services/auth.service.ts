@@ -82,7 +82,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  private apiUrl = 'https://3.135.217.231:3002';
+  private apiUrl = 'https://gp-back.onrender.com';
 
   constructor(private http: HttpClient) {}
 
