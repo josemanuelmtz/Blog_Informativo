@@ -11,7 +11,7 @@ import { WebSocketServer } from 'ws'; // Importa WebSocketServer desde 'ws'
 const PORT = process.env.PORT || 3002;
 const app = express();
 
-const allowedOrigins = ['https://localhost:3002', 'http://localhost:3002', 'https://3.135.217.231:3002'];
+const allowedOrigins = ['https://localhost:3002', 'http://localhost:3002', 'https://3.135.217.231:3002', 'https://gp-back.onrender.com'];
 
 const corsOptions = {
   origin: (origin, callback) => {
