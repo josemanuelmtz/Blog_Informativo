@@ -1,0 +1,14 @@
+/* notification.component.css */
+.notification {
+    background-color: #4CAF50; /* Color verde para éxito */
+    color: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+  }
+  

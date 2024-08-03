@@ -12,6 +12,8 @@ import { NoticiasComponent } from './components/noticias/noticias.component';
 import { ListaNoticiasComponent } from './components/lista-noticias/lista-noticias.component';
 import { HttpClientModule } from '@angular/common/http';
 import { VistanoticiasComponent } from './components/vistanoticias/vistanoticias.component';
+import { NewsService } from './services/news.service';
+import { NotificationComponent } from './components/notification/notification.component'; 
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { VistanoticiasComponent } from './components/vistanoticias/vistanoticias
     NoticiasComponent,
     ListaNoticiasComponent,
     VistanoticiasComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import { VistanoticiasComponent } from './components/vistanoticias/vistanoticias
     ReactiveFormsModule,
   ],
   providers: [
+    NewsService,
     provideClientHydration()
   ],
   bootstrap: [AppComponent]
