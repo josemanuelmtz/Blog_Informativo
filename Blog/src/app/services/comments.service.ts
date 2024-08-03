@@ -15,7 +15,7 @@ interface Comment {
   providedIn: 'root'
 })
 export class CommentService {
-  private apiUrl = 'http://localhost:3000/api/comments';
+  private apiUrl = 'http://localhost:3002/api/comments';
 
   constructor(private http: HttpClient) { }
 

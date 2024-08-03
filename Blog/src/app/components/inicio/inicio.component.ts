@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NewsServiceFactory } from '../../services/news-service-factory';
+import { NewsService } from '../../services/news-service.interface';
 
 @Component({
   selector: 'app-inicio',
@@ -9,14 +11,16 @@ import { Component, OnInit } from '@angular/core';
 export class InicioComponent implements OnInit {
   noticias: any[] = [];
   role: string | null = null;
-
-  constructor(private http: HttpClient) {}
-
+  private newsService: NewsService;
+  
+  constructor(private newsServiceFactory: NewsServiceFactory) {
+    this.newsService = this.newsServiceFactory.createService();
+  }
   ngOnInit(): void {
     const storedRole = localStorage.getItem('userRole');
     console.log('Stored role:', storedRole); // Depuración
     this.role = storedRole;
-    this.http.get<any[]>('https://3.147.61.80:3002/noticias').subscribe(
+    this.newsService.getNoticias().subscribe(
       data => {
         this.noticias = data;
       },
@@ -25,7 +29,6 @@ export class InicioComponent implements OnInit {
       }
     );
   }
-
   
 }
 

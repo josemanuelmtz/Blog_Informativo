@@ -98,7 +98,7 @@ export class RegisterComponent implements OnInit{
         const newUser = this.registroForm.value;
 
         //const url = 'http://localhost:3002/register'; 
-        const url = 'https://3.147.61.80:3002/register'; 
+        const url = 'https://3.135.217.231:3002/register'; 
 
         this.http.post<any>(url, newUser).subscribe(
           response => {

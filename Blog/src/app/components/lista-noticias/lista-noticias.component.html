@@ -12,7 +12,7 @@
     <div style="display: flex; justify-content: end;">
         <button (click)="openCreateModal()">Crear Noticia</button>
     </div>
-    
+    <app-notification [message]="notificationMessage"></app-notification>
     <table id="newsTable">
         <thead>
             <tr>
