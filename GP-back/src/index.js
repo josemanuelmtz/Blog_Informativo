@@ -30,6 +30,7 @@ app.use(noticias);
 app.listen(3002)
 console.log('Server is running on port', 3002)
 
+
 try {
     // Read SSL certificate files
     const privateKey = fs.readFileSync('/etc/nginx/ssl/nginx-blog.key', 'utf8');
