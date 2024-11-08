@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS usuario (
     id_u INT PRIMARY KEY AUTO_INCREMENT,
     usuario VARCHAR(50),
     correo VARCHAR(50),
-    contrasena VARCHAR(100)
+    contrasena VARCHAR(100),
     rol boolean
 );
 

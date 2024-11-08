@@ -1,0 +1,59 @@
+services:
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    ports:
+      - "9090:80"
+    environment:
+      - PMA_ARBITRARY=1
+    deploy:
+      resources:
+        limits:
+          cpus: "0.20"
+          memory: 200M
+        reservations:
+          cpus: "0.10"
+          memory: 100M  
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    ports:
+      - "3306:3306"
+      #command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+      - ./mysql_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=qwerty
+      - MYSQL_DATABASE=Blog
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=admin
+  
+  blog-informativo-back:
+    #image: node:18.17.1-alpine
+    container_name: blog-informativo-back
+    build:
+      context: ./GP-back
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on: 
+      - mysql-db
+  
+  blog-informativo-front:
+    container_name: blog-informativo-front
+    build:
+      context: ./Blog
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - /temp
+    deploy:
+      resources:
+        limits:
+          cpus: "0.30"
+          memory: 300M
+        reservations:
+          cpus: "0.15"
+          memory: 200M
